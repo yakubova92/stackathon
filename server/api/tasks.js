@@ -11,3 +11,12 @@ router.get('/', (req, res, next) => {
     .then(tasks => res.json(tasks))
     .catch(next);
 });
+
+router.post('/', (req, res, next) => {
+  const user = {userId: req.user.id};
+  const body = req.body;
+  const taskBody = Object.assign(body, user);
+  Task.create(taskBody)
+    .then(createdTask => res.json(createdTask))
+    .catch(next);
+});
