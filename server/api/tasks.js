@@ -26,12 +26,19 @@ router.put('/delete', (req, res, next) => {
   // const user = {userId: req.user.id};
   // const body = req.body;
   // const taskBody = Object.assign(body, user);
-  console.log('REQ.BODY', req.body)
   Task.destroy({
     where: {
       id: req.body.id
     }
   })
+    .then(res.status(204).send('Task successfully deleted'))
+    .catch(next);
+});
+
+router.put('/done', (req, res, next) => {
+  console.log('REQ.BODY', req.body)
+  Task.findById(req.body.id)
+    .then(task => task.update(req.body))
     .then(res.status(204).send('Task successfully deleted'))
     .catch(next);
 });
