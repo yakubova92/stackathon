@@ -6,7 +6,7 @@ const GET_TASKS = 'GET_TASKS';
 const ADD_TASK = 'ADD_TASK';
 const DELETE_TASK = 'DELETE_TASK';
 const MARK_DONE = 'MARK_DONE';
-
+const ROLL_OVER = 'ROLL_OVER';
 
 // //INITIAL STATE
 // const taskList = [];
@@ -33,6 +33,12 @@ export function deleteTask (task){
 export function markDone (task){
   return {
     type: MARK_DONE,
+    task
+  }
+}
+export function rollOver (task){
+  return {
+    type: ROLL_OVER,
     task
   }
 }
@@ -78,6 +84,17 @@ export function markTaskDone(event, task) {
   }
 }
 
+export function rollTaskOver(event, task) {
+  return function (dispatch) {
+    axios.put('/api/tasks/rollover', task)
+      .then(res => res.data)
+      .then(task => {
+        dispatch(rollOver(task));
+      })
+      .catch(err => {throw Error('task could not be rolled over', err)})
+  }
+}
+
 //REDUCER - keep your state as an array, always return an array, never an object
 export default function (state = [], action) {
   switch (action.type) {
@@ -94,7 +111,11 @@ export default function (state = [], action) {
       return state.filter(task => task !== action.task);
 
     case MARK_DONE:
-      return [...state, action.task]
+      return [...state, action.task];
+
+    case ROLL_OVER:
+      return [...state, action.task];
+
     default:
       return state;
   }

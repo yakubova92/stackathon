@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 // import {Link} from 'react-router-dom';
 // import {logout} from '../store';
-import {fetchTasks, destroyTask, markTaskDone} from '../store';
+import {fetchTasks, destroyTask, markTaskDone, rollTaskOver} from '../store';
 var moment = require('moment');
 moment().format();
 
@@ -31,14 +31,12 @@ class TaskList extends Component {
   render() {
     const taskList = this.props.state.tasks[0];
     console.log('taskList', taskList);
-    console.log('DATE of first task', taskList && taskList[0].dayAssigned, taskList && moment(taskList[0].dayAssigned)._d)
 
     let datesArr = [];
     for (let i = 0; i < 7; i++){
       let fullDate = moment().add(i, 'days')._d;
       datesArr.push(fullDate.toString());
     }
-    console.log(datesArr);
 
     return (
       <div>
@@ -57,7 +55,6 @@ class TaskList extends Component {
 
                   {
                     taskList && taskList.map(task => {
-                      console.log('is', date, '===', moment(task.dayAssigned)._d.toString().slice(0, 10))
                       if (moment(task.dayAssigned)._d.toString().slice(0, 10) === date){
 
                         return (
@@ -65,12 +62,19 @@ class TaskList extends Component {
                             <p> {task.description}</p>
 
                             <Button
-                              onClick={(event) => this.props.markDone(event, task)}>Done
+                              onClick={(event) => this.props.markDone(event, task)}>
+                              Done
                             </Button>
+
                             <Button>Edit</Button>
-                            <Button>Rollover</Button>
+
+                            <Button onClick={(event) => this.props.rollOver(event, task)}>
+                              Rollover
+                            </Button>
+
                             <Button
-                              onClick={(event) => this.props.deleteTaskItem(event, task)}>Delete
+                              onClick={(event) => this.props.deleteTaskItem(event, task)}>
+                              Delete
                             </Button>
                           </div>
                         )
@@ -113,6 +117,14 @@ const mapDispatch = dispatch => {
       const updatedStatus = {status: 'Complete'}
       const updatedTask = Object.assign(task, updatedStatus)
       dispatch(markTaskDone(event, updatedTask))
+    },
+    rollOver: function (event, task){
+      event.preventDefault()
+      let newDay = moment(task.dayAssigned).add(1, 'days')._d.toString();
+      let newDayAssigned = moment(newDay).format()
+      const updatedDay = {dayAssigned: newDayAssigned}
+      const updatedTask = Object.assign(task, updatedDay)
+      dispatch(rollTaskOver(event, updatedTask))
     }
   }
 }

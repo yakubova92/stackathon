@@ -39,3 +39,11 @@ router.put('/done', (req, res, next) => {
     .then(res.status(204).send('Task successfully deleted'))
     .catch(next);
 });
+
+router.put('/rollover', (req, res, next) => {
+  console.log('REQ.BODY', req.body)
+  Task.findById(req.body.id)
+    .then(task => task.update(req.body))
+    .then(res.status(204).send('Task successfully rolled over'))
+    .catch(next);
+});
