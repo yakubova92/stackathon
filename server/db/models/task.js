@@ -26,11 +26,11 @@ const Task = db.define('task', {
 // get today's date
 let todayFullDate = moment()._d.toString();
 let today = moment(todayFullDate).format().slice(0, 10);
-console.log('TODAY', today)
+
 // get tomorrow's date
 let tomorrowFullDate = moment(todayFullDate).add(1, 'days')._d.toString();
 let tomorrow = moment(tomorrowFullDate).format().slice(0,10)
-console.log('TOMORROW', tomorrow)
+
 // class method to rollover tasks, will be called by 'scheduleJob'
 Task.rollOver = function (){
   return Task.update({
