@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Button } from 'react-bootstrap';
+import { Button, ButtonToolbar, ButtonGroup, Glyphicon } from 'react-bootstrap';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
@@ -10,6 +10,7 @@ import {fetchTasks, destroyTask, markTaskDone, rollTaskOver} from '../store';
 
 var moment = require('moment');
 moment().format();
+
 
 class TaskList extends Component {
   constructor(props){
@@ -49,11 +50,14 @@ class TaskList extends Component {
             datesArr && datesArr.map(date => {
             date = moment(date)._d.toString().slice(0, 10);
             return (
-              <Col key={date} className="card-day">
+              <Col key={date}>
+
+                <Row className="day">
                 <h3> {date.slice(0,3).toUpperCase()} </h3>
                 <h6> {date.slice(3,10)} </h6>
+                </Row>
 
-
+                <Row className="card-day">
                 {
                   taskList && taskList.map(task => {
                     if (moment(task.dayAssigned)._d.toString().slice(0, 10) === date){
@@ -61,26 +65,44 @@ class TaskList extends Component {
                         <div key={task.id} className="day-tasks">
                           <p> {task.description}</p>
 
-                          <Button
-                            onClick={(event) => this.props.markDone(event, task)}>
-                            Done
-                          </Button>
+                          <Row className="button-group">
+                          <div>
+                            <ButtonToolbar>
+                              <ButtonGroup>
+                                <Button
+                                bsSize="xsmall"
+                                onClick={(event) => this.props.markDone(event, task)}>
+                                  <Glyphicon glyph="ok" />
+                                </Button>
 
-                          <Button>Edit</Button>
+                                <Button bsSize="xsmall">
+                                  <Glyphicon glyph="pencil" />
+                                </Button>
 
-                          <Button onClick={(event) => this.props.rollOver(event, task)}>
-                            Rollover
-                          </Button>
+                                <Button
+                                bsSize="xsmall"
+                                onClick={(event) => this.props.deleteTaskItem(event, task)}>
+                                  <Glyphicon glyph="remove" />
+                                </Button>
 
-                          <Button
-                            onClick={(event) => this.props.deleteTaskItem(event, task)}>
-                            Delete
-                          </Button>
+                                <Button
+                                bsSize="xsmall"
+                                onClick={(event) => this.props.rollOver(event, task)}>
+                                  <Glyphicon glyph="share-alt" />
+                                </Button>
+
+                              </ButtonGroup>
+                            </ButtonToolbar>
+                            </div>
+
+                          </Row>
                         </div>
                       )
                     }
                   })
                 }
+                </Row>
+
               </Col>
             )})
           }

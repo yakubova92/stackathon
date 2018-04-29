@@ -40,6 +40,17 @@ form div {
   border: .5px solid green;
   border-radius: 2%;
 }
+.day{
+  margin: 4px;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  background: rgba(255, 255, 255, .2);
+  border: .5px solid green;
+  border-radius: 2%;
+}
 
 .card-day {
   width: 125px;
@@ -50,6 +61,11 @@ form div {
   background: rgba(255, 255, 255, .2);
   border: .5px solid red;
   border-radius: 2%;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
 }
 
 .day-tasks {
