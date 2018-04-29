@@ -30,15 +30,15 @@ form div {
 }
 
 .week-view {
+
   margin: 4px;
   padding-top: 1em;
   display: flex;
   flex-direction: row;
+  flex-grow: 1;
   align-items: flex-start;
   justify-content: flex-start;
   background: rgba(255, 255, 255, .2);
-  border: .5px solid green;
-  border-radius: 2%;
 }
 .day{
   margin: 4px;
@@ -47,36 +47,32 @@ form div {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-evenly;
-  background: rgba(255, 255, 255, .2);
-  border: .5px solid green;
-  border-radius: 2%;
+  background: rgba(224, 21, 21, 0.2);
 }
 
 .card-day {
-  width: 125px;
+  width: 100%;
   margin: 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background: rgba(255, 255, 255, .2);
-  border: .5px solid red;
-  border-radius: 2%;
+
 }
 
 .button-group {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .day-tasks {
   width: 125px;
-  margin: 4px;
+  padding: 7px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background: rgba(255, 255, 255, .2);
-  border: .5px solid purple;
-  border-radius: 2%;
+  background: rgba(93, 78, 78, 0.2);
+  border-bottom: .5px solid black;
 }
 
 /* .card-day:hover {
