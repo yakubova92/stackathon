@@ -4,7 +4,8 @@ import { Button } from 'react-bootstrap';
 // import {Link} from 'react-router-dom';
 // import {logout} from '../store';
 import {fetchTasks, destroyTask, markTaskDone} from '../store';
-
+var moment = require('moment');
+moment().format();
 
 class TaskList extends Component {
   constructor(props){
@@ -25,20 +26,27 @@ class TaskList extends Component {
   // }
 
   render() {
-    const taskList = this.props.state.tasks[0]
-    console.log('taskList', taskList)
+    const taskList = this.props.state.tasks[0];
+    console.log('taskList', taskList);
+    console.log('DATE of first task', taskList && taskList[0].dayAssigned, taskList && moment(taskList[0].dayAssigned)._d)
     return (
       <div>
         <p> look at all this stuff you have to do! </p>
         {
           taskList && taskList.map(task => {
+            let date = moment(task.dayAssigned)._d.toString().slice(0, 10);
             return (
               <div key={task.id}>
                 <p> {task.description}</p>
-                <Button onClick={(event) => this.props.markDone(event, task)}>Done</Button>
+                <p> {date}</p>
+                <Button
+                  onClick={(event) => this.props.markDone(event, task)}>Done
+                </Button>
                 <Button>Edit</Button>
                 <Button>Rollover</Button>
-                <Button onClick={(event) => this.props.deleteTaskItem(event, task)}>Delete</Button>
+                <Button
+                  onClick={(event) => this.props.deleteTaskItem(event, task)}>Delete
+                </Button>
               </div>
             )
           })
@@ -70,7 +78,6 @@ const mapDispatch = dispatch => {
       event.preventDefault()
       const updatedStatus = {status: 'Complete'}
       const updatedTask = Object.assign(task, updatedStatus)
-      console.log('UPDATED TASK', updatedTask)
       dispatch(markTaskDone(event, updatedTask))
     }
   }

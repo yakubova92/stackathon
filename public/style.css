@@ -1,3 +1,4 @@
+
 body {
   font-family: sans-serif;
 }
@@ -19,3 +20,54 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+
+.card-container {
+  border: .5px solid blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.week-view {
+  margin: 4px;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, .2);
+  border: .5px solid green;
+  border-radius: 2%;
+}
+
+.card-day {
+  width: 125px;
+  margin: 4px;
+  display: flex;
+  justify-content: space-evenly;
+  background: rgba(255, 255, 255, .2);
+  border: .5px solid red;
+  border-radius: 2%;
+}
+
+/* .card-day:hover {
+  margin: 4px;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, .6);
+  border: .5px solid red;
+  border-radius: 2%;
+  color:black;
+  position: relative;
+  top: -5px;
+} */
+
+/* .category-description {
+  width: 275px;
+  text-align: center;
+  padding: .4em;
+  padding-bottom: 1em;
+} */

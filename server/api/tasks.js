@@ -23,9 +23,6 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/delete', (req, res, next) => {
-  // const user = {userId: req.user.id};
-  // const body = req.body;
-  // const taskBody = Object.assign(body, user);
   Task.destroy({
     where: {
       id: req.body.id

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Navbar, AddTask, TaskList } from './components'
+import { Navbar, AddTask, TaskList, Card} from './components'
 import Routes from './routes'
 
 
@@ -10,6 +10,7 @@ const App = () => {
       <Navbar />
       <Routes />
       <AddTask />
+      <Card />
       <TaskList />
     </div>
   )
