@@ -9,4 +9,4 @@ export {Login, Signup} from './auth-form'
 
 export {default as AddTask} from './AddTask'
 export {default as TaskList} from './TaskList'
-export {default as Card} from './Card'
+

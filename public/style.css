@@ -45,9 +45,21 @@ form div {
   width: 125px;
   margin: 4px;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   background: rgba(255, 255, 255, .2);
   border: .5px solid red;
+  border-radius: 2%;
+}
+
+.day-tasks {
+  width: 125px;
+  margin: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: rgba(255, 255, 255, .2);
+  border: .5px solid purple;
   border-radius: 2%;
 }
 
