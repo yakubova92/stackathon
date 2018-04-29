@@ -8,6 +8,7 @@ const DELETE_TASK = 'DELETE_TASK';
 const MARK_DONE = 'MARK_DONE';
 const ROLL_OVER = 'ROLL_OVER';
 
+
 // //INITIAL STATE
 // const taskList = [];
 
@@ -42,6 +43,7 @@ export function rollOver (task){
     task
   }
 }
+
 //THUNK CREATORS
 export function fetchTasks() {
   return function (dispatch) {
@@ -83,7 +85,6 @@ export function markTaskDone(event, task) {
       .catch(err => {throw Error('task could not be deleted from the database', err)})
   }
 }
-
 export function rollTaskOver(event, task) {
   return function (dispatch) {
     axios.put('/api/tasks/rollover', task)

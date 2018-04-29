@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/lib/Col';
 // import {Link} from 'react-router-dom';
 // import {logout} from '../store';
 import {fetchTasks, destroyTask, markTaskDone, rollTaskOver} from '../store';
+
 var moment = require('moment');
 moment().format();
 
@@ -23,10 +24,10 @@ class TaskList extends Component {
     this.props.loadTaskList();
   }
   // showForm(){
-  //   this.setState({
-  //     showForm: !this.state.showForm
-  //   })
-  // }
+    //   this.setState({
+      //     showForm: !this.state.showForm
+      //   })
+      // }
 
   render() {
     const taskList = this.props.state.tasks[0];
@@ -40,56 +41,52 @@ class TaskList extends Component {
 
     return (
       <div>
-        <p> look at all this stuff you have to do! </p>
-        <Grid className="card-container">
+      <p> look at all this stuff you have to do! </p>
+      <Grid className="card-container">
 
-          <Row className="week-view">
-            {
-              datesArr && datesArr.map(date => {
-                date = moment(date)._d.toString().slice(0, 10);
-                return (
-                <Col key={date} className="card-day">
-                  <h3> {date.slice(0,3).toUpperCase()} </h3>
-                  <h6> {date.slice(3,10)} </h6>
+        <Row className="week-view">
+          {
+            datesArr && datesArr.map(date => {
+            date = moment(date)._d.toString().slice(0, 10);
+            return (
+              <Col key={date} className="card-day">
+                <h3> {date.slice(0,3).toUpperCase()} </h3>
+                <h6> {date.slice(3,10)} </h6>
 
 
-                  {
-                    taskList && taskList.map(task => {
-                      if (moment(task.dayAssigned)._d.toString().slice(0, 10) === date){
+                {
+                  taskList && taskList.map(task => {
+                    if (moment(task.dayAssigned)._d.toString().slice(0, 10) === date){
+                      return (
+                        <div key={task.id} className="day-tasks">
+                          <p> {task.description}</p>
 
-                        return (
-                          <div key={task.id} className="day-tasks">
-                            <p> {task.description}</p>
+                          <Button
+                            onClick={(event) => this.props.markDone(event, task)}>
+                            Done
+                          </Button>
 
-                            <Button
-                              onClick={(event) => this.props.markDone(event, task)}>
-                              Done
-                            </Button>
+                          <Button>Edit</Button>
 
-                            <Button>Edit</Button>
+                          <Button onClick={(event) => this.props.rollOver(event, task)}>
+                            Rollover
+                          </Button>
 
-                            <Button onClick={(event) => this.props.rollOver(event, task)}>
-                              Rollover
-                            </Button>
-
-                            <Button
-                              onClick={(event) => this.props.deleteTaskItem(event, task)}>
-                              Delete
-                            </Button>
-                          </div>
-                        )
-                      }
-                    })
-                  }
-                </Col>
-                )
-              })
-            }
-
-          </Row>
-
-        </Grid>
-      </div>
+                          <Button
+                            onClick={(event) => this.props.deleteTaskItem(event, task)}>
+                            Delete
+                          </Button>
+                        </div>
+                      )
+                    }
+                  })
+                }
+              </Col>
+            )})
+          }
+        </Row>
+      </Grid>
+    </div>
     )
   }
 }
