@@ -75,6 +75,10 @@ form div {
   border-bottom: .5px solid black;
 }
 
+.complete-tasks {
+  text-decoration: line-through;
+}
+
 /* .card-day:hover {
   margin: 4px;
   padding-top: 1em;

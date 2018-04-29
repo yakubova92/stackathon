@@ -63,8 +63,13 @@ class TaskList extends Component {
                     if (moment(task.dayAssigned)._d.toString().slice(0, 10) === date){
                       return (
                         <div key={task.id} className="day-tasks">
+                        {
+                          task.status === 'Complete'
+                          ? <p className="complete-tasks"> {task.description} </p>
+                          :
                           <p> {task.description}</p>
 
+                        }
                           <Row className="button-group">
                           <div>
                             <ButtonToolbar>
