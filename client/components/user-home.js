@@ -7,10 +7,10 @@ import {connect} from 'react-redux'
  */
 export const UserHome = (props) => {
   const {email} = props
-
+  const indexOfAt = email.indexOf('@');
   return (
     <div>
-      <h3>Welcome, {email}</h3>
+      <h3>Welcome, {email.slice(0, indexOfAt)}!</h3>
     </div>
   )
 }

@@ -6,7 +6,14 @@ import {logout} from '../store'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <h1>The Realist's To-Do</h1>
+    <div className="header">
+      <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/652207-200.png" />
+      <div>
+        <h1>THE</h1>
+        <h1>REALIST'S</h1>
+        <h1>TO-DO</h1>
+      </div>
+    </div>
     <nav>
       {isLoggedIn ? (
         <div>

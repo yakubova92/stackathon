@@ -21,16 +21,34 @@ form div {
   display: inline-block;
 }
 
+.center {
+  margin: auto;
+  width: 25%;
+  padding: 10px;
+  border: 1px solid rgba(224, 21, 21, 0.2)
+}
 
-.card-container {
-  border: .5px solid blue;
+.header {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  font-family: Impact;
+}
+
+.add-task-form {
+  margin: 10px;
+  padding-left: 10px;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .week-view {
-
   margin: 4px;
   padding-top: 1em;
   display: flex;

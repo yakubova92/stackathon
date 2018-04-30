@@ -42,7 +42,6 @@ class TaskList extends Component {
 
     return (
       <div>
-      <p> look at all this stuff you have to do! </p>
       <Grid className="card-container">
 
         <Row className="week-view">
@@ -53,8 +52,8 @@ class TaskList extends Component {
               <Col key={date}>
 
                 <Row className="day">
-                <h3> {date.slice(0,3).toUpperCase()} </h3>
-                <h6> {date.slice(3,10)} </h6>
+                  <h3> {date.slice(0,3).toUpperCase()} </h3>
+                  <h6> {date.slice(3,10)} </h6>
                 </Row>
 
                 <Row className="card-day">
@@ -71,7 +70,7 @@ class TaskList extends Component {
 
                         }
                           <Row className="button-group">
-                          <div>
+
                             <ButtonToolbar>
                               <ButtonGroup>
                                 <Button
@@ -98,7 +97,6 @@ class TaskList extends Component {
 
                               </ButtonGroup>
                             </ButtonToolbar>
-                            </div>
 
                           </Row>
                         </div>
