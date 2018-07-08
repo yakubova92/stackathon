@@ -11,6 +11,33 @@ import {fetchTasks, destroyTask, markTaskDone, rollTaskOver} from '../store';
 var moment = require('moment');
 moment().format();
 
+let calculateDateOffset = function (todayDay) {
+  switch (todayDay) {
+    case 'Sun':
+    return [0, 1, 2, 3, 4, 5, 6]
+    case 'Mon':
+    return [-1, 0, 1, 2, 3, 4, 5]
+    case 'Tue':
+    return [-2, -1, 0, 1, 2, 3, 4]
+    case 'Wed':
+    return [-3, -2, -1, 0, 1, 2, 3]
+    case 'Thu':
+    return [-4, -3, -2, -1, 0, 1, 2]
+    case 'Fri':
+    return [ -5, -4, -3, -2, -1, 0, 1]
+    case 'Sat':
+    return [-6, -5, -4, -3, -2, -1, 0]
+    default:
+    return [0, 1, 2, 3, 4, 5, 6];
+  }
+}
+let todayDay = moment()._d.toString().slice(0, 3);
+let datesArr = [];
+let toAdd = calculateDateOffset(todayDay);
+for (let i = 0; i < toAdd.length; i++){
+  let fullDate = moment().add(toAdd[i], 'days')._d;
+  datesArr.push(fullDate.toString())
+}
 
 class TaskList extends Component {
   constructor(props){
@@ -33,12 +60,7 @@ class TaskList extends Component {
   render() {
     const taskList = this.props.state.tasks[0];
     console.log('taskList', taskList);
-
-    let datesArr = [];
-    for (let i = 0; i < 7; i++){
-      let fullDate = moment().add(i, 'days')._d;
-      datesArr.push(fullDate.toString());
-    }
+    console.log('TODAY', moment()._d.toString().slice(0, 3))
 
     return (
       <div>
