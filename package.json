@@ -1,7 +1,7 @@
 {
   "name": "stackathon",
   "version": "1.0.0",
-  "description": "The Realist's To-Do: a webapp to manage task that realistically don't get completed by the end of the day",
+  "description": "The Realist's To-Do: a webapp to manage tasks that realistically don't get completed by the end of the day",
   "engines": {
     "node": ">= 7.0.0"
   },

@@ -3,6 +3,7 @@ const {Task} = require('../db/models');
 module.exports = router;
 
 router.get('/', (req, res, next) => {
+  //console.log('USER', req.user)
   const user = +req.user.dataValues.id;
   Task.findAll({
     where: {
@@ -19,6 +20,7 @@ router.post('/', (req, res, next) => {
   const taskBody = Object.assign(body, user);
   Task.create(taskBody)
     .then(createdTask => res.json(createdTask))
+    .then(res.status(204).send('Task successfully created'))
     .catch(next);
 });
 
@@ -33,17 +35,25 @@ router.put('/delete', (req, res, next) => {
 });
 
 router.put('/done', (req, res, next) => {
-  console.log('REQ.BODY', req.body)
+  //console.log('REQ.BODY', req.body)
   Task.findById(req.body.id)
     .then(task => task.update(req.body))
-    .then(res.status(204).send('Task successfully deleted'))
+    .then(res.status(204).send('Task successfully marked done'))
     .catch(next);
 });
 
 router.put('/rollover', (req, res, next) => {
-  console.log('REQ.BODY', req.body)
+  //console.log('REQ.BODY', req.body)
   Task.findById(req.body.id)
     .then(task => task.update(req.body))
     .then(res.status(204).send('Task successfully rolled over'))
+    .catch(next);
+});
+
+router.put('/edit', (req, res, next) => {
+  //console.log('REQ.BODY', req.body)
+  Task.findById(req.body.id)
+    .then(task => task.update(req.body))
+    .then(res.status(204).send('Task successfully edited'))
     .catch(next);
 });
