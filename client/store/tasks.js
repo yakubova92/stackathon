@@ -8,9 +8,9 @@ const DELETE_TASK = 'DELETE_TASK';
 const MARK_DONE = 'MARK_DONE';
 const ROLL_OVER = 'ROLL_OVER';
 
-
 // //INITIAL STATE
-// const taskList = [];
+// taskList = []
+// weekDisplayed = 0;
 
 //ACTION CREATORS
 export function getTasks(tasks){

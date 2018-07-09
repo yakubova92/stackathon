@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 // import {Link} from 'react-router-dom';
 // import {logout} from '../store';
-import {fetchTasks, destroyTask, markTaskDone, rollTaskOver} from '../store';
+import {fetchTasks, destroyTask, markTaskDone, rollTaskOver, navNext} from '../store';
 
 var moment = require('moment');
 moment().format();
@@ -32,39 +32,71 @@ let calculateDateOffset = function (todayDay) {
   }
 }
 let todayDay = moment()._d.toString().slice(0, 3);
-let datesArr = [];
+let fullDatesFormatted = [];
 let toAdd = calculateDateOffset(todayDay);
+//creates an array of dates from Sun - Sat that includes today's date
 for (let i = 0; i < toAdd.length; i++){
   let fullDate = moment().add(toAdd[i], 'days')._d;
-  datesArr.push(fullDate.toString())
+  fullDatesFormatted.push(fullDate);
 }
+let presentWeek = fullDatesFormatted;
+
 
 class TaskList extends Component {
   constructor(props){
     super(props);
     this.state = {
       taskList: [],
-      //showForm: false
+      weekDisplayed: 0
     }
-    //this.showForm = this.showForm.bind(this);
+   this.navNextWeek = this.navNextWeek.bind(this);
+   this.navPrevWeek = this.navPrevWeek.bind(this);
+   this.navPresentWeek = this.navPresentWeek.bind(this);
   }
+
   componentDidMount(){
     this.props.loadTaskList();
   }
-  // showForm(){
-    //   this.setState({
-      //     showForm: !this.state.showForm
-      //   })
-      // }
+
+  navNextWeek() {
+    fullDatesFormatted = fullDatesFormatted.map(date => moment(date).add(1, 'weeks')._d)
+    this.setState({
+      weekDisplayed: this.state.weekDisplayed + 1
+    })
+  }
+  navPrevWeek() {
+    fullDatesFormatted = fullDatesFormatted.map(date => moment(date).add(-1, 'weeks')._d)
+    this.setState({
+      weekDisplayed: this.state.weekDisplayed - 1
+    })
+  }
+  navPresentWeek() {
+    fullDatesFormatted = presentWeek;
+    this.setState({
+      weekDisplayed: 0
+    })
+  }
 
   render() {
     const taskList = this.props.state.tasks[0];
     console.log('taskList', taskList);
     console.log('TODAY', moment()._d.toString().slice(0, 3))
+    let datesArr = fullDatesFormatted.map(date => date.toString());
 
     return (
       <div>
       <Grid className="card-container">
+        <Row className="week-view">
+          <Button bsSize="large" onClick={(event) => this.navPrevWeek(event)}>
+            <Glyphicon glyph="chevron-left" />
+          </Button>
+          <Button bsSize="large" onClick={(event) => this.navPresentWeek(event)}>
+            Today
+          </Button>
+          <Button bsSize="large" onClick={(event) => this.navNextWeek(event)}>
+            <Glyphicon glyph="chevron-right" />
+          </Button>
+        </Row>
 
         <Row className="week-view">
           {
@@ -148,10 +180,10 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
+    // dispatches the thunk that uses GET_TASK action
     loadTaskList: function (){
       dispatch(fetchTasks())
     },
-      //dispatches the thunk that uses GET_TASK action
     deleteTaskItem: function(event, task){
       event.preventDefault()
       dispatch(destroyTask(event, task))
