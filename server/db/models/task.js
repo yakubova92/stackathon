@@ -34,8 +34,6 @@ let tomorrow = moment(tomorrowFullDate).format().slice(0,10)
 // class method to rollover tasks, will be called by 'scheduleJob'
 Task.rollOver = function (){
   console.log('hit ROLLOVER class method')
-  console.log('today', today)
-  console.log('tomorrow', tomorrow)
   return Task.update({
     dayAssigned: tomorrow
   }, {where: {
