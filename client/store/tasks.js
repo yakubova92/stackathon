@@ -19,10 +19,10 @@ export function getTasks(tasks){
     tasks
   }
 }
-export function addTask(newTask){
+export function addTask(createdTask){
   return {
     type: ADD_TASK,
-    newTask
+    createdTask
   }
 }
 export function deleteTask (task){
@@ -104,10 +104,11 @@ export default function (state = [], action) {
       return [...state, action.tasks];
 
     case ADD_TASK:
-      return {
-        ...state,
-        tasks: [...state.tasks, action.task]
-      };
+      return [...state, action.createTask];
+      // return {
+      //   ...state,
+      //   tasks: [...state.tasks, action.task]
+      // };
     //   // var index = state.tasks.length;
     //   // //return Object.assign({}, state, { tasks: action.task })
     //   // state.tasks[index] = action.task
@@ -119,8 +120,11 @@ export default function (state = [], action) {
     // }
     case DELETE_TASK:
       // filter out deleted task - NEEDS MORE WORK, NOT RENDERING RIGHT. doesn't rerender list with deleted task filtered out unless you hard refresh
-      console.log('ACTION.TASK', action.task.id)
-      return state.tasks.filter(task => task !== action.task);
+      console.log('state', state)
+      console.log('action', action)
+      console.log('state filtered', state.filter(task => task !== action.task))
+      console.log('ACTION.TASK', action.task)
+      return state.filter(task => task !== action.task);
 
     case MARK_DONE:
       return [...state, action.task];

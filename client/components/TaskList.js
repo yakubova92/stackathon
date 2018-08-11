@@ -78,9 +78,10 @@ class TaskList extends Component {
   }
 
   render() {
+    console.log('re-render triggered')
     const taskList = this.props.state.tasks[0];
-    console.log('taskList', taskList);
-    console.log('TODAY', moment()._d.toString().slice(0, 3))
+    //console.log('taskList', taskList);
+    //console.log('TODAY', moment()._d.toString().slice(0, 3))
     let datesArr = fullDatesFormatted.map(date => date.toString());
 
     return (
