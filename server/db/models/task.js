@@ -33,6 +33,9 @@ let tomorrow = moment(tomorrowFullDate).format().slice(0,10)
 
 // class method to rollover tasks, will be called by 'scheduleJob'
 Task.rollOver = function (){
+  console.log('hit ROLLOVER class method')
+  console.log('today', today)
+  console.log('tomorrow', tomorrow)
   return Task.update({
     dayAssigned: tomorrow
   }, {where: {
@@ -41,7 +44,8 @@ Task.rollOver = function (){
   }});
 };
 // calls Task.rollOver to rollover all of today's incomplete tasks to the next day
-nodeSchedule.scheduleJob('50 59 23 * * *', function() {
+nodeSchedule.scheduleJob('1 59 23 * * *', function() {  // tasks will be rolled over at 11:59:01 PM
+  console.log('this is the rollover function')
   return Task.rollOver()
 })
 

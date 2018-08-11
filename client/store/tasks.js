@@ -8,9 +8,9 @@ const DELETE_TASK = 'DELETE_TASK';
 const MARK_DONE = 'MARK_DONE';
 const ROLL_OVER = 'ROLL_OVER';
 
+
 // //INITIAL STATE
-// taskList = []
-// weekDisplayed = 0;
+// const taskList = [];
 
 //ACTION CREATORS
 export function getTasks(tasks){
@@ -19,10 +19,10 @@ export function getTasks(tasks){
     tasks
   }
 }
-export function addTask(task){
+export function addTask(newTask){
   return {
     type: ADD_TASK,
-    task
+    newTask
   }
 }
 export function deleteTask (task){
@@ -104,12 +104,23 @@ export default function (state = [], action) {
       return [...state, action.tasks];
 
     case ADD_TASK:
-      return [...state, action.task];
+      return {
+        ...state,
+        tasks: [...state.tasks, action.task]
+      };
+    //   // var index = state.tasks.length;
+    //   // //return Object.assign({}, state, { tasks: action.task })
+    //   // state.tasks[index] = action.task
+    //   // return state;
 
+    // return {
+    //     // ...state,
+    //     // tasks: [...state.tasks, action.newTask]
+    // }
     case DELETE_TASK:
       // filter out deleted task - NEEDS MORE WORK, NOT RENDERING RIGHT. doesn't rerender list with deleted task filtered out unless you hard refresh
       console.log('ACTION.TASK', action.task.id)
-      return state.filter(task => task !== action.task);
+      return state.tasks.filter(task => task !== action.task);
 
     case MARK_DONE:
       return [...state, action.task];

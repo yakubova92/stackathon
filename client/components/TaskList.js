@@ -34,7 +34,7 @@ let calculateDateOffset = function (todayDay) {
 let todayDay = moment()._d.toString().slice(0, 3);
 let fullDatesFormatted = [];
 let toAdd = calculateDateOffset(todayDay);
-//creates an array of dates from Sun - Sat that includes today's date
+//creates an array of dates from Sun - Sat that includes today's date, saved to presentWeek
 for (let i = 0; i < toAdd.length; i++){
   let fullDate = moment().add(toAdd[i], 'days')._d;
   fullDatesFormatted.push(fullDate);
