@@ -191,7 +191,9 @@ const mapDispatch = dispatch => {
     },
     markDone: function (event, task){
       event.preventDefault()
-      const updatedStatus = {status: 'Complete'}
+      console.log('task Status', task.status)
+      if (task.status === 'Incomplete') var updatedStatus = {status: 'Complete'}
+      else updatedStatus = {status: 'Incomplete'}
       const updatedTask = Object.assign(task, updatedStatus)
       dispatch(markTaskDone(event, updatedTask))
     },
