@@ -134,9 +134,9 @@ class TaskList extends Component {
                                   <Glyphicon glyph="ok" />
                                 </Button>
 
-                                <Button bsSize="xsmall">
+                                {/* <Button bsSize="xsmall">
                                   <Glyphicon glyph="pencil" />
-                                </Button>
+                                </Button> */}
 
                                 <Button
                                 bsSize="xsmall"
