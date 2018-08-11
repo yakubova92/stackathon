@@ -121,10 +121,15 @@ export default function (state = [], action) {
     case DELETE_TASK:
       // filter out deleted task - NEEDS MORE WORK, NOT RENDERING RIGHT. doesn't rerender list with deleted task filtered out unless you hard refresh
       console.log('state', state)
-      console.log('action', action)
+      console.log('action Type: ', action.type)
+      console.log('action Payload: ', action.task, 'type of', typeof action.task)
       console.log('state filtered', state.filter(task => task !== action.task))
-      console.log('ACTION.TASK', action.task)
-      return state.filter(task => task !== action.task);
+      console.log('ACTION.TASK', typeof action)
+      //return state.filter(task => task !== action.task);
+      return [
+        ...state.filter(task => task.id !== action.task.id),
+        Object.assign([], action.task)
+      ]
 
     case MARK_DONE:
       return [...state, action.task];
