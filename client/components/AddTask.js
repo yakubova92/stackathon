@@ -8,11 +8,11 @@ import {createTask} from '../store';
 
 const AddTask = (props) => {
   return (
-    <div className="center">
+    <div className="add-task">
       <form className="add-task-form" onSubmit={event => props.handleSubmit(event)}>
         <input type="text" name="description" placeholder="enter a new task" />
         <input type="date" name="dayAssigned" />
-        <Button bsStyle="danger" type="submit">Add</Button>
+        <Button bsStyle="danger" type="submit">Add Task</Button>
       </form>
     </div>
   )

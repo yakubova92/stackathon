@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/lib/Col';
 // import {Link} from 'react-router-dom';
 // import {logout} from '../store';
 import {fetchTasks, destroyTask, markTaskDone, rollTaskOver, navNext} from '../store';
+import {AddTask} from '../components';
 
 var moment = require('moment');
 moment().format();
@@ -85,38 +86,42 @@ class TaskList extends Component {
     let datesArr = fullDatesFormatted.map(date => date.toString());
 
     return (
-      <div>
-      <Grid className="card-container">
-        <Row className="week-view">
-          <Button bsSize="large" onClick={(event) => this.navPrevWeek(event)}>
-            <Glyphicon glyph="chevron-left" />
-          </Button>
-          <Button bsSize="large" onClick={(event) => this.navPresentWeek(event)}>
-            Today
-          </Button>
-          <Button bsSize="large" onClick={(event) => this.navNextWeek(event)}>
-            <Glyphicon glyph="chevron-right" />
-          </Button>
-        </Row>
-
+      <div id="task-list">
+        <div id="week-nav-add-task" className="center">
+          <Grid id="week-nav-bar">
+            <Row>
+              <Button bsSize="large" onClick={(event) => this.navPrevWeek(event)}>
+                <Glyphicon glyph="chevron-left" />
+              </Button>
+              <Button bsSize="large" onClick={(event) => this.navPresentWeek(event)}>
+                Today
+              </Button>
+              <Button bsSize="large" onClick={(event) => this.navNextWeek(event)}>
+                <Glyphicon glyph="chevron-right" />
+              </Button>
+            </Row>
+          </Grid>
+          <AddTask />
+        </div>
+        <Grid>
         <Row className="week-view">
           {
             datesArr && datesArr.map(date => {
             date = moment(date)._d.toString().slice(0, 10);
             return (
-              <Col key={date}>
+              <Col className="day-column" key={date}>
 
-                <Row className="day">
-                  <h3> {date.slice(0,3).toUpperCase()} </h3>
-                  <h6> {date.slice(3,10)} </h6>
+                <Row className="day-date">
+                  <h3> {date.slice(0, 3).toUpperCase()} </h3>
+                  <h6> {date.slice(3, 10)} </h6>
                 </Row>
 
-                <Row className="card-day">
+                <Row className="day-task-list">
                 {
                   taskList && taskList.map(task => {
                     if (moment(task.dayAssigned)._d.toString().slice(0, 10) === date){
                       return (
-                        <div key={task.id} className="day-tasks">
+                        <div key={task.id} className="day-task">
                         {
                           task.status === 'Complete'
                           ? <p className="complete-tasks"> {task.description} </p>
@@ -124,7 +129,7 @@ class TaskList extends Component {
                           <p> {task.description}</p>
 
                         }
-                          <Row className="button-group">
+                          <Row className="task-button-group">
 
                             <ButtonToolbar>
                               <ButtonGroup>

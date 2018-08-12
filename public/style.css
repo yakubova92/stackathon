@@ -1,7 +1,14 @@
-
-body {
-  font-family: sans-serif;
+/* overall styling */
+#app {
+  width: 1280px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
 }
+/* body {
+  font-family: sans-serif;
+} */
 
 a {
   text-decoration: none;
@@ -25,40 +32,56 @@ form div {
   margin: auto;
   width: 25%;
   padding: 10px;
-  border: 1px solid rgba(224, 21, 21, 0.2)
 }
 
+/* header: logo, welcome, add Task form */
 .header {
   display: flex;
   flex-direction: row;
   font-family: Impact;
+  border: 1px solid red;
 }
-
+.logo-title {
+  display: flex;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+}
+#week-nav-add-task {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
 .add-task-form {
   margin: 10px;
   padding-left: 10px;
   align-content: center;
   display: flex;
+  flex-direction: row;
+}
+/* tasklist */
+
+#task-list {
+  display: flex;
   flex-direction: column;
 }
-
-.card-container {
+#week-nav-bar {
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .week-view {
-  margin: 4px;
-  padding-top: 1em;
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background: rgba(255, 255, 255, .2);
 }
-.day{
+
+.day-column {
+  width: 100%;
+}
+
+
+/* days of the week with date */
+.day-date{
   margin: 4px;
   padding-top: 1em;
   display: flex;
@@ -67,53 +90,30 @@ form div {
   justify-content: space-evenly;
   background: rgba(224, 21, 21, 0.2);
 }
-
-.card-day {
+/* daily row of tasks */
+.day-task-list {
   width: 100%;
   margin: 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
 }
-
-.button-group {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.day-tasks {
-  width: 125px;
+/* individual tasks */
+.day-task {
   padding: 7px;
+  margin-right: 7px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   background: rgba(93, 78, 78, 0.2);
   border-bottom: .5px solid black;
 }
+.task-button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 .complete-tasks {
   text-decoration: line-through;
 }
-
-/* .card-day:hover {
-  margin: 4px;
-  padding-top: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, .6);
-  border: .5px solid red;
-  border-radius: 2%;
-  color:black;
-  position: relative;
-  top: -5px;
-} */
-
-/* .category-description {
-  width: 275px;
-  text-align: center;
-  padding: .4em;
-  padding-bottom: 1em;
-} */

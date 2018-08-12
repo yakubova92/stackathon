@@ -5,16 +5,16 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <div className="header">
+  <div className="header">
+    <div className="logo-title">
       <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/652207-200.png" />
-      <div>
+      <div className="title">
         <h1>THE</h1>
         <h1>REALIST'S</h1>
         <h1>TO-DO</h1>
       </div>
     </div>
-    <nav>
+    <nav className="login-nav">
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
