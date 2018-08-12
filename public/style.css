@@ -41,21 +41,27 @@ form div {
   font-family: Impact;
   border: 1px solid red;
 }
-
+.logo-title {
+  display: flex;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+}
+#week-nav-add-task {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
 .add-task-form {
   margin: 10px;
   padding-left: 10px;
   align-content: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 /* tasklist */
-/* .card-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border: 1px solid blue;
-} */
+
 #task-list {
   display: flex;
   flex-direction: column;
@@ -66,14 +72,7 @@ form div {
 }
 
 .week-view {
-  /* margin: 4px;
-  padding-top: 1em; */
   display: flex;
-  /* flex-direction: row;
-  flex-grow: 1;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background: rgba(255, 255, 255, .2); */
 }
 
 .day-column {
@@ -118,24 +117,3 @@ form div {
 .complete-tasks {
   text-decoration: line-through;
 }
-
-/* .card-day:hover {
-  margin: 4px;
-  padding-top: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, .6);
-  border: .5px solid red;
-  border-radius: 2%;
-  color:black;
-  position: relative;
-  top: -5px;
-} */
-
-/* .category-description {
-  width: 275px;
-  text-align: center;
-  padding: .4em;
-  padding-bottom: 1em;
-} */

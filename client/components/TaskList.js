@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/lib/Col';
 // import {Link} from 'react-router-dom';
 // import {logout} from '../store';
 import {fetchTasks, destroyTask, markTaskDone, rollTaskOver, navNext} from '../store';
+import {AddTask} from '../components';
 
 var moment = require('moment');
 moment().format();
@@ -85,21 +86,23 @@ class TaskList extends Component {
 
     return (
       <div id="task-list">
-      <Grid id="week-nav-bar">
-        <Row>
-          <Button bsSize="large" onClick={(event) => this.navPrevWeek(event)}>
-            <Glyphicon glyph="chevron-left" />
-          </Button>
-          <Button bsSize="large" onClick={(event) => this.navPresentWeek(event)}>
-            Today
-          </Button>
-          <Button bsSize="large" onClick={(event) => this.navNextWeek(event)}>
-            <Glyphicon glyph="chevron-right" />
-          </Button>
-        </Row>
-      </Grid>
-
-      <Grid>
+        <div id="week-nav-add-task" className="center">
+          <Grid id="week-nav-bar">
+            <Row>
+              <Button bsSize="large" onClick={(event) => this.navPrevWeek(event)}>
+                <Glyphicon glyph="chevron-left" />
+              </Button>
+              <Button bsSize="large" onClick={(event) => this.navPresentWeek(event)}>
+                Today
+              </Button>
+              <Button bsSize="large" onClick={(event) => this.navNextWeek(event)}>
+                <Glyphicon glyph="chevron-right" />
+              </Button>
+            </Row>
+          </Grid>
+          <AddTask />
+        </div>
+        <Grid>
         <Row className="week-view">
           {
             datesArr && datesArr.map(date => {
