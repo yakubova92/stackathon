@@ -58,11 +58,13 @@ export function fetchTasks() {
 export function createTask(newTask) {
   return function (dispatch) {
     axios.post('/api/tasks', newTask)
+      // .then(console.log('newTask', newTask))
       .then(res => res.data)
       .then(createdTask => {
-        dispatch(addTask(createdTask));
+        console.log(`I GOT A RES INSIDE THE THUNK PROMISE CHAIN, here it is: ${JSON.stringify(createdTask)}`);
+        return dispatch(addTask(createdTask));
       })
-      .catch(err => {throw Error('task could not be created', err)})
+      // .catch(err => {throw Error('task could not be created', err)})
   }
 }
 export function destroyTask(event, taskToDestroy) {
@@ -101,23 +103,12 @@ export default function (state = [], action) {
   switch (action.type) {
 
     case GET_TASKS:
-      return [...state, action.tasks];
+      return [...state, ...action.tasks];
 
-    case ADD_TASK:
-      return [...state, action.createTask];
-      // return {
-      //   ...state,
-      //   tasks: [...state.tasks, action.task]
-      // };
-    //   // var index = state.tasks.length;
-    //   // //return Object.assign({}, state, { tasks: action.task })
-    //   // state.tasks[index] = action.task
-    //   // return state;
+    case ADD_TASK: {
+      return [...state, action.createdTask];
+    }
 
-    // return {
-    //     // ...state,
-    //     // tasks: [...state.tasks, action.newTask]
-    // }
     case DELETE_TASK:
       // filter out deleted task - NEEDS MORE WORK, NOT RENDERING RIGHT. doesn't rerender list with deleted task filtered out unless you hard refresh
       console.log('state', state)
@@ -125,6 +116,7 @@ export default function (state = [], action) {
       console.log('action Payload: ', action.task, 'type of', typeof action.task)
       console.log('state filtered', state.filter(task => task !== action.task))
       console.log('ACTION.TASK', typeof action)
+      console.log('task ID', action.task)
       //return state.filter(task => task !== action.task);
       return [
         ...state.filter(task => task.id !== action.task.id),
@@ -135,6 +127,7 @@ export default function (state = [], action) {
       return [...state, action.task];
 
     case ROLL_OVER:
+      console.log('state:', state, 'action', action, 'action.task:', action.task)
       return [...state, action.task];
 
     default:

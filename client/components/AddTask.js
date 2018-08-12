@@ -33,6 +33,7 @@ const mapDispatch = dispatch => {
       const dayAssigned = event.target.dayAssigned.value
       const body = {description: description, dayAssigned: dayAssigned}
       event.preventDefault()
+      console.log('add event', event)
       dispatch(createTask(body))  //dispatches the thunk that uses ADD_TASK action
     }
   }

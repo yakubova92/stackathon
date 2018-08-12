@@ -18,10 +18,16 @@ router.post('/', (req, res, next) => {
   const user = {userId: req.user.id};
   const body = req.body;
   const taskBody = Object.assign(body, user);
+  console.log(`\n ** ABOUT TO CREATE ${taskBody} *** \n`);
   Task.create(taskBody)
-    .then(createdTask => res.json(createdTask))
-    .then(res.status(204).send('Task successfully created'))
-    .catch(next);
+    .then(createdTask => {
+      console.log(`\n ** TASK CREATED => ${createdTask} *** \n`);
+      return res.status(200).json(createdTask);
+    })
+    .catch(error => {
+      console.log(`\n ** CRAB-APPLES! ${error.message + error.stack} *** \n`);
+      return next(error);
+    });
 });
 
 router.put('/delete', (req, res, next) => {
