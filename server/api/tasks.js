@@ -36,7 +36,8 @@ router.put('/delete', (req, res, next) => {
       id: req.body.id
     }
   })
-    .then(res.status(204).send('Task successfully deleted'))
+    .then(res.status(200).json(req.body))
+    //.then(res.status(204).send('Task successfully deleted'))
     .catch(next);
 });
 
@@ -44,6 +45,7 @@ router.put('/done', (req, res, next) => {
   //console.log('REQ.BODY', req.body)
   Task.findById(req.body.id)
     .then(task => task.update(req.body))
+    //.then(updatedTask => res.status(200).json(updatedTask))
     .then(res.status(204).send('Task successfully marked done'))
     .catch(next);
 });
