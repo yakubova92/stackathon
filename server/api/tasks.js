@@ -37,7 +37,6 @@ router.put('/delete', (req, res, next) => {
     }
   })
     .then(res.status(200).json(req.body))
-    //.then(res.status(204).send('Task successfully deleted'))
     .catch(next);
 });
 
