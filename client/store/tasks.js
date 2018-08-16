@@ -119,7 +119,12 @@ export default function (state = [], action) {
       return [...state.filter(task => task.id !== action.task.id)]
 
     case MARK_DONE:
-      return [...state, action.task];
+      //return [...state, action.task];
+      return [...state.map(task => {
+        if (task.id === action.task.id) {
+          return action.task;
+        } return task;
+      })]
 
     case ROLL_OVER:
       return [...state.map(task => {

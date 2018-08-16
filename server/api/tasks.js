@@ -48,10 +48,14 @@ router.put('/delete', (req, res, next) => {
 
 router.put('/done', (req, res, next) => {
   //console.log('REQ.BODY', req.body)
+  let currentTask = req.body;
+  if (currentTask.status === 'Incomplete') var updatedStatus = {status: 'Complete'}
+  else updatedStatus = {status: 'Incomplete'}
+  //const updatedTask = Object.assign(task, updatedStatus)
   Task.findById(req.body.id)
-    .then(task => task.update(req.body))
-    //.then(updatedTask => res.status(200).json(updatedTask))
-    .then(res.status(204).send('Task successfully marked done'))
+    .then(task => task.update(updatedStatus))
+    .then(updatedTask => res.status(200).json(updatedTask))
+    //.then(res.status(204).send('Task successfully marked done'))
     .catch(next);
 });
 
