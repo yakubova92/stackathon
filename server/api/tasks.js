@@ -2,6 +2,11 @@ const router = require('express').Router();
 const {Task} = require('../db/models');
 module.exports = router;
 
+
+var moment = require('moment');
+moment().format();
+
+
 router.get('/', (req, res, next) => {
   //console.log('USER', req.user)
   const user = +req.user.dataValues.id;
@@ -36,7 +41,8 @@ router.put('/delete', (req, res, next) => {
       id: req.body.id
     }
   })
-    .then(res.status(200).json(req.body))
+    .then(deletedTask => res.status(200).json(deletedTask))
+    //.then(res.status(204).send('Task successfully deleted'))
     .catch(next);
 });
 
@@ -51,9 +57,13 @@ router.put('/done', (req, res, next) => {
 
 router.put('/rollover', (req, res, next) => {
   //console.log('REQ.BODY', req.body)
+  let currentTask = req.body;
+  let newDay = moment(currentTask.dayAssigned).add(1, 'days')._d.toString();
+  let newDayAssigned = moment(newDay).format()
+  const updatedDay = {dayAssigned: newDayAssigned}
   Task.findById(req.body.id)
-    .then(task => task.update(req.body))
-    .then(res.status(204).send('Task successfully rolled over'))
+    .then(task => task.update(updatedDay))
+    .then(updatedTask => res.status(200).json(updatedTask))
     .catch(next);
 });
 

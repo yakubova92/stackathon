@@ -205,11 +205,11 @@ const mapDispatch = dispatch => {
     },
     rollOver: function (event, task){
       event.preventDefault()
-      let newDay = moment(task.dayAssigned).add(1, 'days')._d.toString();
-      let newDayAssigned = moment(newDay).format()
-      const updatedDay = {dayAssigned: newDayAssigned}
-      const updatedTask = Object.assign(task, updatedDay)
-      dispatch(rollTaskOver(event, updatedTask))
+      // let newDay = moment(task.dayAssigned).add(1, 'days')._d.toString();
+      // let newDayAssigned = moment(newDay).format()
+      // const updatedDay = {dayAssigned: newDayAssigned}
+      // const updatedTask = Object.assign(task, updatedDay)
+      dispatch(rollTaskOver(event, task))
     }
   }
 }
