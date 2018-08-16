@@ -197,18 +197,10 @@ const mapDispatch = dispatch => {
     },
     markDone: function (event, task){
       event.preventDefault()
-      //console.log('task Status', task.status)
-      // if (task.status === 'Incomplete') var updatedStatus = {status: 'Complete'}
-      // else updatedStatus = {status: 'Incomplete'}
-      // const updatedTask = Object.assign(task, updatedStatus)
       dispatch(markTaskDone(event, task))
     },
     rollOver: function (event, task){
       event.preventDefault()
-      // let newDay = moment(task.dayAssigned).add(1, 'days')._d.toString();
-      // let newDayAssigned = moment(newDay).format()
-      // const updatedDay = {dayAssigned: newDayAssigned}
-      // const updatedTask = Object.assign(task, updatedDay)
       dispatch(rollTaskOver(event, task))
     }
   }

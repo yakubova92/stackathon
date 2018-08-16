@@ -1,7 +1,5 @@
 import axios from 'axios';
 import history from '../history';
-var moment = require('moment');
-moment().format();
 
 //ACTION TYPES
 const GET_TASKS = 'GET_TASKS';
@@ -10,9 +8,6 @@ const DELETE_TASK = 'DELETE_TASK';
 const MARK_DONE = 'MARK_DONE';
 const ROLL_OVER = 'ROLL_OVER';
 
-
-// //INITIAL STATE
-// const taskList = [];
 
 //ACTION CREATORS
 export function getTasks(tasks){
@@ -63,7 +58,6 @@ export function createTask(newTask) {
       // .then(console.log('newTask', newTask))
       .then(res => res.data)
       .then(createdTask => {
-        console.log(`I GOT A RES INSIDE THE THUNK PROMISE CHAIN, here it is: ${JSON.stringify(createdTask)}`);
         return dispatch(addTask(createdTask));
       })
       .catch(err => {throw Error('task could not be created', err)})
@@ -90,15 +84,10 @@ export function markTaskDone(event, task) {
   }
 }
 export function rollTaskOver(event, task) {
-  // let newDay = moment(task.dayAssigned).add(1, 'days')._d.toString();
-  // let newDayAssigned = moment(newDay).format()
-  // const updatedDay = {dayAssigned: newDayAssigned}
-  // const updatedTask = Object.assign(task, updatedDay)
   return function (dispatch) {
     axios.put('/api/tasks/rollover', task)
       .then(res => res.data)
       .then(task => {
-        console.log(`I GOT A RES INSIDE THE rollOver THUNK PROMISE CHAIN, here it is: ${JSON.stringify(task)}`);
         return dispatch(rollOver(task));
       })
       .catch(err => {throw Error('task could not be rolled over', err)})
@@ -119,7 +108,6 @@ export default function (state = [], action) {
       return [...state.filter(task => task.id !== action.task.id)]
 
     case MARK_DONE:
-      //return [...state, action.task];
       return [...state.map(task => {
         if (task.id === action.task.id) {
           return action.task;
