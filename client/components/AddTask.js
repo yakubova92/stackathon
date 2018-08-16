@@ -5,13 +5,17 @@ import { Button } from 'react-bootstrap';
 // import {logout} from '../store';
 import {createTask} from '../store';
 
+var moment = require('moment');
+moment().format();
+
+let today = moment().toISOString(true).slice(0, 10);
 
 const AddTask = (props) => {
   return (
     <div className="add-task">
       <form className="add-task-form" onSubmit={event => props.handleSubmit(event)}>
         <input type="text" name="description" placeholder="enter a new task" />
-        <input type="date" name="dayAssigned" />
+        <input type="date" name="dayAssigned" defaultValue={today} />
         <Button bsStyle="danger" type="submit">Add Task</Button>
       </form>
     </div>
@@ -33,7 +37,6 @@ const mapDispatch = dispatch => {
       const dayAssigned = event.target.dayAssigned.value
       const body = {description: description, dayAssigned: dayAssigned}
       event.preventDefault()
-      console.log('add event', event)
       dispatch(createTask(body))  //dispatches the thunk that uses ADD_TASK action
     }
   }

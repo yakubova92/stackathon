@@ -90,9 +90,7 @@ form div {
   justify-content: space-evenly;
   background: rgba(224, 21, 21, 0.2);
 }
-.today{
-  background: rgba(105, 15, 15, 0.2);
-}
+
 /* daily row of tasks */
 .day-task-list {
   width: 100%;
