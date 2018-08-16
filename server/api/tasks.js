@@ -35,7 +35,7 @@ router.put('/delete', (req, res, next) => {
       id: req.body.id
     }
   })
-    .then(deletedTask => res.status(200).json(deletedTask))
+    .then(res.status(200).json(req.body))
     .catch(next);
 });
 
