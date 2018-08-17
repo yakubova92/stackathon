@@ -85,15 +85,17 @@ class TaskList extends Component {
     return (
       <div id="task-list">
         <div id="week-nav-add-task" className="center">
-          <Button bsSize="large" onClick={(event) => this.navPrevWeek(event)}>
-            <Glyphicon glyph="chevron-left" />
-          </Button>
-          <Button bsSize="large" onClick={(event) => this.navPresentWeek(event)}>
+
+          <button type="button" className="btn btn-lg" onClick={(event) => this.navPrevWeek(event)}>
+            <span className="glyphicon glyphicon-chevron-left" />
+          </button>
+          <button type="button" className="btn btn-lg" onClick={(event) => this.navPresentWeek(event)}>
             Today
-          </Button>
-          <Button bsSize="large" onClick={(event) => this.navNextWeek(event)}>
-            <Glyphicon glyph="chevron-right" />
-          </Button>
+          </button>
+          <button type="button" className="btn btn-lg" onClick={(event) => this.navNextWeek(event)}>
+            <span className="glyphicon glyphicon-chevron-right" />
+          </button>
+
           <AddTask />
         </div>
 
