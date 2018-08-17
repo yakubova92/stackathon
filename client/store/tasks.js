@@ -97,8 +97,9 @@ export function rollTaskOver(event, task) {
 //REDUCER - keep your state as an array, always return an array, never an object
 export default function (state = [], action) {
   switch (action.type) {
-
+    //GET_TASKS resets state.tasks to an empty array. GET_TASKS is only called when a new user logs in. This ensures that the task list is empty when switching between accounts.
     case GET_TASKS:
+      state = [];
       return [...state, ...action.tasks];
 
     case ADD_TASK:
