@@ -30,7 +30,6 @@ form div {
 
 .center {
   margin: auto;
-  width: 25%;
   padding: 10px;
 }
 
@@ -51,7 +50,6 @@ form div {
 #week-nav-add-task {
   display: flex;
   flex-direction: row;
-  margin: 10px;
 }
 .add-task-form {
   margin: 10px;
