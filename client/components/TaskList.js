@@ -41,7 +41,7 @@ for (let i = 0; i < toAdd.length; i++){
   fullDatesFormatted.push(fullDate);
 }
 let presentWeek = fullDatesFormatted;
-
+let today = moment()._d.toString().slice(0, 10)
 
 class TaskList extends Component {
   constructor(props){
@@ -104,76 +104,81 @@ class TaskList extends Component {
           </Grid>
           <AddTask />
         </div>
+
         <Grid>
-        <Row className="week-view">
-          {
-            datesArr && datesArr.map(date => {
-            date = moment(date)._d.toString().slice(0, 10);
-            return (
-              <Col className="day-column" key={date}>
+          <Row className="week-view">
+            {
+              datesArr && datesArr.map(date => {
+              date = moment(date)._d.toString().slice(0, 10);
+              let dayCardClass;
+              if (date === today) dayCardClass = 'today'
+              else dayCardClass = 'day-column'
 
-                <Row className="day-date">
-                  <h3> {date.slice(0, 3).toUpperCase()} </h3>
-                  <h6> {date.slice(3, 10)} </h6>
-                </Row>
+              return (
+                <Col className={dayCardClass} key={date}>
 
-                <Row className="day-task-list">
-                {
-                  taskList && taskList.map(task => {
-                    if (moment(task.dayAssigned)._d.toString().slice(0, 10) === date){
-                      return (
-                        <div key={task.id} className="day-task">
-                        {
-                          task.status === 'Complete'
-                          ? <p className="complete-tasks"> {task.description} </p>
-                          :
-                          <p> {task.description}</p>
+                  <Row className="day-date">
+                    <h3> {date.slice(0, 3).toUpperCase()} </h3>
+                    <h6> {date.slice(3, 10)} </h6>
+                  </Row>
 
-                        }
-                          <Row className="task-button-group">
+                  <Row className="day-task-list">
+                  {
+                    taskList && taskList.map(task => {
+                      if (moment(task.dayAssigned)._d.toString().slice(0, 10) === date){
+                        return (
+                          <div key={task.id} className="day-task">
+                          {
+                            task.status === 'Complete'
+                            ? <p className="complete-tasks"> {task.description} </p>
+                            :
+                            <p> {task.description}</p>
 
-                            <ButtonToolbar>
-                              <ButtonGroup>
-                                <Button
-                                bsSize="xsmall"
-                                onClick={(event) => this.props.markDone(event, task)}>
-                                  <Glyphicon glyph="ok" />
-                                </Button>
+                          }
+                            <Row className="task-button-group">
 
-                                {/* <Button bsSize="xsmall">
-                                  <Glyphicon glyph="pencil" />
-                                </Button> */}
+                              <ButtonToolbar>
+                                <ButtonGroup>
+                                  <Button
+                                  bsSize="xsmall"
+                                  onClick={(event) => this.props.markDone(event, task)}>
+                                    <Glyphicon glyph="ok" />
+                                  </Button>
 
-                                <Button
-                                bsSize="xsmall"
-                                onClick={(event) => this.props.deleteTaskItem(event, task)}>
-                                  <Glyphicon glyph="remove" />
-                                </Button>
+                                  {/* <Button bsSize="xsmall">
+                                    <Glyphicon glyph="pencil" />
+                                  </Button> */}
 
-                                <Button
-                                bsSize="xsmall"
-                                onClick={(event) => this.props.rollOver(event, task)}>
-                                  <Glyphicon glyph="share-alt" />
-                                </Button>
+                                  <Button
+                                  bsSize="xsmall"
+                                  onClick={(event) => this.props.deleteTaskItem(event, task)}>
+                                    <Glyphicon glyph="remove" />
+                                  </Button>
 
-                              </ButtonGroup>
-                            </ButtonToolbar>
+                                  <Button
+                                  bsSize="xsmall"
+                                  onClick={(event) => this.props.rollOver(event, task)}>
+                                    <Glyphicon glyph="share-alt" />
+                                  </Button>
 
-                          </Row>
-                        </div>
-                      )
-                    }
-                  })
-                }
-                </Row>
+                                </ButtonGroup>
+                              </ButtonToolbar>
 
-              </Col>
-            )})
-          }
-        </Row>
-      </Grid>
-    </div>
-    )
+                            </Row>
+                          </div>
+                        )
+                      }
+                    })
+                  }
+                  </Row>
+
+                </Col>
+              )})
+            }
+          </Row>
+        </Grid>
+      </div>
+      )
   }
 }
 

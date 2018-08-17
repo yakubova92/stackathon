@@ -78,6 +78,10 @@ form div {
 .day-column {
   width: 100%;
 }
+.today {
+  width: 100%;
+  border: 1px solid black;
+}
 
 
 /* days of the week with date */
@@ -90,6 +94,7 @@ form div {
   justify-content: space-evenly;
   background: rgba(224, 21, 21, 0.2);
 }
+
 
 /* daily row of tasks */
 .day-task-list {
