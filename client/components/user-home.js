@@ -11,7 +11,7 @@ export const UserHome = (props) => {
   const indexOfAt = email.indexOf('@');
   return (
     <div>
-      <h3>Welcome, {email.slice(0, indexOfAt)}!</h3>
+      <p>Welcome, {email.slice(0, indexOfAt)}!</p>
       <TaskList />
     </div>
   )

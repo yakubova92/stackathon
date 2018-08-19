@@ -12,7 +12,9 @@
 a {
   text-decoration: none;
 }
-
+p {
+  text-align: center;
+}
 label {
   display: block;
 }
@@ -35,17 +37,28 @@ form div {
 /* header: logo, welcome, add Task form */
 .header {
   display: flex;
-  flex-direction: row;
-  font-family: Impact;
-  border: 1px solid red;
+  flex-direction: column;
+}
+#logo {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .logo-title {
   display: flex;
+  margin: auto;
 }
 .title {
   display: flex;
   flex-direction: column;
+  font-family: Impact;
 }
+#login-nav {
+  background-color: rgba(224, 21, 21, 0.2);
+}
+
+/* Week Nav */
 #week-nav-add-task {
   display: flex;
   flex-direction: row-reverse;
