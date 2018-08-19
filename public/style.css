@@ -95,6 +95,7 @@ form div {
 .today {
   width: 100%;
   border: 1px solid black;
+  box-shadow: 2px 0px 8px grey;
 }
 
 
