@@ -1,4 +1,4 @@
-/* overall styling */
+/* General */
 #app {
   width: 100%;
   margin: 0px auto;
@@ -126,6 +126,42 @@ form div {
   text-decoration-color: red;
   color: #b5adad;
 }
+
+/************* Break Points Based on Screen Width *************/
+@media screen and (max-width: 800px){
+  /****** General *******/
+  #app {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /****** Week Nav & Add Task Form *******/
+  #week-nav-add-task {
+    display: inline;
+  }
+  .add-task-form {
+    margin: 10px;
+    padding-left: 10px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  /****** TaskList *******/
+  .week-view {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .day-column {
+    width: 25%;
+  }
+  .today {
+    width: 25%;
+  }
+}
+
 @media screen and (max-width: 400px){
   /****** General *******/
   #app {
@@ -163,4 +199,5 @@ form div {
     border-left: 5px solid black;
   }
 }
+
 
