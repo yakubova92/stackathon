@@ -1,10 +1,9 @@
 /* overall styling */
 #app {
-  width: 1280px;
+  width: 100%;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
 }
 /* body {
   font-family: sans-serif;
@@ -48,6 +47,10 @@ form div {
   flex-direction: column;
 }
 #week-nav-add-task {
+  display: flex;
+  flex-direction: row-reverse;
+}
+#week-nav-buttons {
   display: flex;
   flex-direction: row;
 }
@@ -123,3 +126,41 @@ form div {
   text-decoration-color: red;
   color: #b5adad;
 }
+@media screen and (max-width: 400px){
+  /****** General *******/
+  #app {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /****** Week Nav & Add Task Form *******/
+  #week-nav-add-task {
+    display: inline;
+  }
+  .add-task-form {
+    margin: 10px;
+    padding-left: 10px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  /****** TaskList *******/
+  .week-view {
+    display: flex;
+    flex-direction: column;
+  }
+  .day-column {
+    width: 270px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(224, 21, 21, 0.4);
+    border-left: 5px solid rgba(224, 21, 21, 0.4);
+  }
+  .today {
+    width: 100%;
+    margin-bottom: 10px;
+    border-left: 5px solid black;
+  }
+}
+
