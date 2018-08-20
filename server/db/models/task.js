@@ -42,7 +42,7 @@ Task.rollOver = function (){
   }});
 };
 // calls Task.rollOver to rollover all of today's incomplete tasks to the next day
-nodeSchedule.scheduleJob('15 21 11 * * *', function() {  // tasks will be rolled over at 11:59:00 PM
+nodeSchedule.scheduleJob('00 59 23 * * *', function() {  // tasks will be rolled over at 11:59:00 PM
   console.log('the Scheduler is running')
   return Task.rollOver();
 })
