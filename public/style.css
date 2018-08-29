@@ -82,7 +82,10 @@ form div {
   color: white;
   padding: 5px;
 }
-
+/*** Welcome ***/
+#welcome {
+  text-align: center;
+}
 
 /****** About (on login page) *******/
 .feature {
