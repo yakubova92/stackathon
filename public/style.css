@@ -13,7 +13,7 @@ a {
   text-decoration: none;
 }
 p {
-  text-align: center;
+  text-align: left;
 }
 label {
   display: block;
@@ -34,7 +34,7 @@ form div {
   padding: 10px;
 }
 
-/* header: logo, welcome, add Task form */
+/* header: logo, login nav */
 .header {
   display: flex;
   flex-direction: column;
@@ -57,6 +57,32 @@ form div {
 #login-nav {
   background-color: rgba(224, 21, 21, 0.2);
 }
+
+/****** About (on login page) *******/
+.feature {
+  border: 1px double blue;
+  display: flex;
+}
+.feature-img {
+  border: 1px dotted green;
+  width: 50%
+}
+.feature-desc {
+  border: 1px dotted red;
+  width: 50%;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+/*
+.vertical-line {
+  border-left: 1px solid black;
+  height: 280px;
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 30px;
+} */
 
 /* Week Nav */
 #week-nav-add-task {
@@ -142,6 +168,7 @@ form div {
 }
 
 /************* Break Points Based on Screen Width *************/
+
 @media screen and (max-width: 800px){
   /****** General *******/
   #app {
@@ -173,6 +200,29 @@ form div {
   }
   .today {
     width: 25%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  /****** General *******/
+  #app {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+  }
+  /****** ABOUT Page *******/
+  .feature {
+    display: flex;
+    flex-direction: column;
+  }
+  .feature-img {
+    width: 100%;
+  }
+  .feature-desc {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -212,6 +262,7 @@ form div {
     margin-bottom: 10px;
     border-left: 5px solid black;
   }
+
 }
 
 
