@@ -135,6 +135,7 @@ form div {
 #task-list {
   display: flex;
   flex-direction: column;
+  padding-bottom: 50px;
 }
 #week-nav-bar {
   display: flex;
