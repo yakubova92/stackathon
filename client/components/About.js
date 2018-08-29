@@ -16,6 +16,7 @@ export const About = () => (
         <Col className="feature-img">
           <Image src="week.svg" responsive />
         </Col>
+        <Col className="vertical-line" />
         <Col className="feature-desc">
           <h4>Plan Your Days</h4>
           <hr />
@@ -25,11 +26,13 @@ export const About = () => (
           </p>
         </Col>
       </Row>
+      <Row className="horizontal-line" />
 
       <Row className="feature">
         <Col className="feature-img">
           <Image src="day.svg" responsive />
         </Col>
+        <Col className="vertical-line" />
         <Col className="feature-desc">
           <h4>Keep Track</h4>
           <hr />
@@ -40,11 +43,13 @@ export const About = () => (
           </p>
         </Col>
       </Row>
+      <Row className="horizontal-line" />
 
       <Row className="feature">
         <Col className="feature-img">
           <Image src="rollover.svg" responsive />
         </Col>
+        <Col className="vertical-line" />
         <Col className="feature-desc">
           <h4>Not keeping up?</h4>
           <hr />
@@ -54,11 +59,13 @@ export const About = () => (
           </p>
         </Col>
       </Row>
+      <Row className="horizontal-line" />
 
       <Row className="feature">
         <Col className="feature-img">
           <Image src="mobile_view.svg" responsive />
         </Col>
+        <Col className="vertical-line" />
         <Col className="feature-desc">
           <h4>On the go?</h4>
           <hr />
@@ -68,6 +75,7 @@ export const About = () => (
           </p>
         </Col>
       </Row>
+      <Row className="horizontal-line" />
 
     </Grid>
 

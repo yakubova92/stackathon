@@ -71,16 +71,21 @@ form div {
   margin-top: auto;
   margin-bottom: auto;
 }
-/*
 .vertical-line {
-  border-left: 1px solid black;
+  border-left: 2px solid grey;
   height: 280px;
-  margin-top: 30px;
-  margin-left: 50px;
+  display: block;
+  margin-top: auto;
   margin-right: 50px;
-  margin-bottom: 30px;
-} */
-
+  margin-bottom: auto;
+}
+.horizontal-line {
+  border-top: 2px solid grey;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
 /* Week Nav */
 #week-nav-add-task {
   display: flex;
@@ -175,6 +180,11 @@ form div {
     flex-direction: column;
   }
 
+  /****** About *******/
+  .vertical-line {
+    height: 180px;
+  }
+
   /****** Week Nav & Add Task Form *******/
   #week-nav-add-task {
     display: inline;
@@ -211,7 +221,10 @@ form div {
   /****** ABOUT Page *******/
   .feature {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+  .feature hr{
+    display: none;
   }
   .feature-img {
     width: 100%;
@@ -220,6 +233,12 @@ form div {
     width: 100%;
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .vertical-line {
+    display: none;
+  }
+  .horizontal-line {
+    display: inline-block;
   }
 }
 
