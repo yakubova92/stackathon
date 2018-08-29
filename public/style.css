@@ -60,15 +60,12 @@ form div {
 
 /****** About (on login page) *******/
 .feature {
-  border: 1px double blue;
   display: flex;
 }
 .feature-img {
-  border: 1px dotted green;
   width: 50%
 }
 .feature-desc {
-  border: 1px dotted red;
   width: 50%;
   display: block;
   margin-top: auto;
